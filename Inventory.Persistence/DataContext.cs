@@ -15,6 +15,6 @@ namespace Inventory.Persistence
         public DbSet<InventoryStock> InventoryStocks { get; set; }
         public DbSet<MovementType> MovementTypes { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Supplier> Supplier { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
     }
 }
