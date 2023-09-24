@@ -94,7 +94,7 @@ namespace Inventory.WebAPI.Controllers
              var categoryToDelete  = await _categoryRepository.GetByIdAsync(id);
 
              if(categoryToDelete is null)
-                 return NotFound("Registro no encontradop");
+                 return NotFound("Registro no encontrado");
 
             var deleted = await _categoryRepository.DeleteAsync(categoryToDelete);
 
