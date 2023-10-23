@@ -7,17 +7,14 @@ using Inventory.Persistence.Repositories;
 
 namespace Inventory.WebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class InventoryMovementController : ControllerBase
+    
+    public class InventoryMovementController : BaseApiController
     {
         private readonly IInventoryMovementRepository _inventoryMovementRepository;
-        private readonly IMapper _mapper;
-
         public InventoryMovementController(IInventoryMovementRepository inventoryMovementRepository, IMapper mapper)
+        :base(mapper)
         {
             _inventoryMovementRepository=inventoryMovementRepository;
-            _mapper=mapper;
         }
 
         [HttpGet]

@@ -8,17 +8,14 @@ using Dtos = Inventory.DTOs.MovementType;
 
 namespace Inventory.WebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class MovementTypeController : ControllerBase
+    
+    public class MovementTypeController : BaseApiController
     {
         private readonly IMovementTypeRepository _movementTypeRepository;
-        private readonly IMapper _mapper;
-
         public MovementTypeController(IMovementTypeRepository movementTypeRepository, IMapper mapper)
+        :base(mapper)
         {
             _movementTypeRepository = movementTypeRepository;
-            _mapper = mapper;
         }
 
         [HttpGet]

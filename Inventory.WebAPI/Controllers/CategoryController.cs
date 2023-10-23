@@ -8,17 +8,16 @@ using Dtos= Inventory.DTOs.Category;
 
 namespace Inventory.WebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CategoryController : ControllerBase
+
+    public class CategoryController : BaseApiController
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
 
         public CategoryController(ICategoryRepository categoryRepository, IMapper mapper)
+        :base(mapper)
         {
             _categoryRepository=categoryRepository;
-            _mapper=mapper;
         }
 
        [HttpGet]

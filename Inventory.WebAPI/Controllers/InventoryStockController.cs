@@ -7,17 +7,14 @@ using Dtos = Inventory.DTOs.InventoryStock;
 
 namespace Inventory.WebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class InventoryStockController : ControllerBase
+    public class InventoryStockController : BaseApiController
     {
         private readonly IInventoryStockRepository _inventoryStockRepository;
-        private readonly IMapper _mapper;
-
+        
         public InventoryStockController(IInventoryStockRepository inventoryStockRepository, IMapper mapper)
+        : base(mapper)
         {
             _inventoryStockRepository=inventoryStockRepository;
-            _mapper=mapper;
         }
 
         [HttpGet]

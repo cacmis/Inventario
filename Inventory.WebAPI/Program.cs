@@ -1,5 +1,8 @@
+using System.Text;
 using Inventory.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -14,6 +17,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+        options => 
+        {
+            options.TokenValidationParameters = new()
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.ASCII.GetBytes(builder.Configuration["tokenKey"])
+                ),
+                ValidateIssuer = false,
+                ValidateAudience = false
+            };
+        }
+        );
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +45,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
