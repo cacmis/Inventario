@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Inventory.WebAPI.Controllers;
+namespace Inventory.APIAuthoritation.Controllers;
 
 [ApiController]
 [Route("[controller]")]
